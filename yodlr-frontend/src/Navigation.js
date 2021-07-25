@@ -6,17 +6,20 @@ import { NavLink } from "react-router-dom";
 
 
 
-function Navigation(logout) {
+function Navigation({ logout }) {
   return (
     <div>
       <Navbar bg="dark" variant="dark" expand="sm">
         <Container>
           <Navbar.Brand href="#home">Yodlr</Navbar.Brand>
-          <Nav className="me-auto">
-            <NavLink className="nav-link active" exact to="/">Home</NavLink>
-            <NavLink className="nav-link active" exact to="/admin">Admin</NavLink>
-            <NavLink className="nav-link active" exact to="/signup">SignUp</NavLink>
-          </Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <NavLink className="nav-link active" exact to="/">Home</NavLink>
+              <NavLink className="nav-link active" exact to="/admin">Admin</NavLink>
+              <NavLink className="nav-link active" exact to="/signup">SignUp</NavLink>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </div>
