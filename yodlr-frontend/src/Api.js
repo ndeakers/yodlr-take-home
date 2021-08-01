@@ -26,7 +26,7 @@ class YodlrApi {
 
   static async createUser(data) {
     console.log("Api", data);
-    const res = fetch(`${BASE_URL}/`, {
+    const res = await fetch(`${BASE_URL}/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,11 +38,13 @@ class YodlrApi {
       const message = `An error has occured: ${res.message}`;
       throw new Error(message);
     }
-    return res;
+    let response = await res.json();
+    console.log("response", response);
+    return response;
   }
 
   static async activateUser(data) {
-    const res = fetch(`${BASE_URL}/${data.id}`, {
+    const res = await fetch(`${BASE_URL}/${data.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +56,10 @@ class YodlrApi {
       const message = `An error has occured: ${res.message}`;
       throw new Error(message);
     }
-    return res;
+
+    let response = await res.json();
+    console.log("response", response);
+    return response;
   }
 
 

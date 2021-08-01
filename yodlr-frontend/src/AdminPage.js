@@ -29,16 +29,15 @@ function AdminPage() {
 
   // update users here:
   async function handleActivate(userData) {
-    let updateUser = { ...userData, state: "active" };
-    console.log("this is updateUser", updateUser);
-    let updatedUsers = [...users, updateUser];
-    console.log("updatedUsers", updatedUsers);
+    let usersCopy = [...users];
+    let toUpdate = usersCopy.filter((val) => val.id === userData.id);
+    toUpdate[0].state = "active";
     try {
-      const activateResponse = await YodlrApi.activateUser(updateUser);
+      await YodlrApi.activateUser(toUpdate[0]);
     } catch (err) {
       return { success: false, errors: err }
     }
-    setUsers(updatedUsers);
+    setUsers(usersCopy);
   }
 
 

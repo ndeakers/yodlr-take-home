@@ -7,7 +7,7 @@ import { useState } from "react";
 
 function UserCard({ user, handleActivate }) {
 
-  console.log("user")
+  console.log("user", user)
 
   async function activateAccount(evt) {
     evt.preventDefault();
