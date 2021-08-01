@@ -25,12 +25,14 @@ class YodlrApi {
 
 
   static async createUser(data) {
+    console.log("Api", data);
     const res = fetch(`${BASE_URL}/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
+
     });
     if (res.ok === false) {
       const message = `An error has occured: ${res.message}`;

@@ -19,6 +19,7 @@ function App() {
     try {
       const signUpRes = await YodlrApi.createUser(formData);
       setCurrentUser(signUpRes.id);
+      return { success: true, errors: null };
     } catch (err) {
       return { success: false, errors: err }
     }
