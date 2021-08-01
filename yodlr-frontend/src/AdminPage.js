@@ -8,7 +8,7 @@ import UserCard from "./UserCard";
  *        loading---> loading spinner when fetching users
  * Routes ---> AdminPage ---> UserCard
  */
-function AdminPage() {
+function AdminPage({ handleActivate }) {
   const [users, setUsers] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,7 +35,7 @@ function AdminPage() {
   console.log("users before render", users);
   return (
     <div>
-      {users.map((user) => <UserCard user={user} key={user.id} />)}
+      {users.map((user) => <UserCard handleActivate={handleActivate} user={user} key={user.id} />)}
     </div>
   )
 }

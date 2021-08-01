@@ -41,6 +41,23 @@ class YodlrApi {
     return res;
   }
 
+  static async activateUser(data) {
+    const res = fetch(`${BASE_URL}/${data.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+
+    });
+    if (res.ok === false) {
+      const message = `An error has occured: ${res.message}`;
+      throw new Error(message);
+    }
+    return res;
+  }
+
+
 
 
 }
