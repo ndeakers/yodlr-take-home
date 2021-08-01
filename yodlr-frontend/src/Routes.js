@@ -4,11 +4,11 @@ import { Switch, Route, Redirect } from "react-router";
 import AdminPage from "./AdminPage";
 import Homepage from "./Homepage";
 
-function Routes({ handleSignUp, handleActivate }) {
+function Routes({ handleSignUp }) {
   return (
     <Switch>
       <Route exact path="/admin">
-        <AdminPage handleActivate={handleActivate} />
+        <AdminPage />
       </Route>
       <Route exact path="/signup">
         <SignUpForm handleSignUp={handleSignUp} />

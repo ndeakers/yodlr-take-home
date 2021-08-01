@@ -24,14 +24,7 @@ function App() {
       return { success: false, errors: err }
     }
   }
-  async function handleActivate(userData) {
-    try {
-      const activateResponse = await YodlrApi.activateUser(userData);
-      return { success: true, errors: null };
-    } catch (err) {
-      return { success: false, errors: err }
-    }
-  }
+
   async function handleLogout() {
     setCurrentUser(null);
   }
@@ -40,7 +33,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation logout={handleLogout} />
-      <Routes handleSignUp={handleSignUp} handleActivate={handleActivate} />
+      <Routes handleSignUp={handleSignUp} />
     </BrowserRouter>
   )
 

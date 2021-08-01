@@ -8,8 +8,8 @@ import UserCard from "./UserCard";
  *        loading---> loading spinner when fetching users
  * Routes ---> AdminPage ---> UserCard
  */
-function AdminPage({ handleActivate }) {
-  const [users, setUsers] = useState(null);
+function AdminPage() {
+  const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(function fetchAllUsers() {
@@ -25,7 +25,22 @@ function AdminPage({ handleActivate }) {
       }
     }
     fetchUsers();
-  }, [])
+  }, []);
+
+  // update users here:
+  async function handleActivate(userData) {
+    let updateUser = { ...userData, state: "active" };
+    console.log("this is updateUser", updateUser);
+    let updatedUsers = [...users, updateUser];
+    console.log("updatedUsers", updatedUsers);
+    try {
+      const activateResponse = await YodlrApi.activateUser(updateUser);
+    } catch (err) {
+      return { success: false, errors: err }
+    }
+    setUsers(updatedUsers);
+  }
+
 
   if (isLoading) {
     return (
