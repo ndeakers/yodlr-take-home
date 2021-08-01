@@ -10,7 +10,6 @@ function UserCard({ user, handleActivate }) {
   console.log("user")
 
   async function activateAccount(evt) {
-
     evt.preventDefault();
     try {
       const response = await handleActivate(user);
